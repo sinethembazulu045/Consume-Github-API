@@ -1,21 +1,10 @@
-from github import Github
-
-import urllib3
 import requests
-
-from credentials import Token_access
-#from credentials import PASSWORD
+import datetime as dt
 
 
-g = Github(Token_access)
 
-repos = g.get_user().get_repos()
-
-
-  
-repos_information =[]
-for repo in repos:
-    data=[]
-    data.append(repo.name)
-    data.append(repo.startdate)
-    print(repos_information)
+def PR(repo_name, start_date, end_date):
+    pull_request = requests.get("https://api.github.com/repos/Umuzi-org/tech-department/pulls?id=453")     
+    my_data = pull_request.json()
+    return my_data
+# print(PR('Umuzi-org','1-12-2019','5-6-2020'))
